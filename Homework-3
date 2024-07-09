@@ -1,0 +1,149 @@
+Task 1
+//Count the Letters and Digits
+
+function countAll(str) {
+    const result = { "LETTERS": 0, "DIGITS": 0 };
+    for (let i = 0; i < str.length; i++) {
+        let char = str[i];
+        if (char >= 'a' && char <= 'z' || char >= 'A' && char <= 'Z') {
+            result.LETTERS++;
+        } else if (char >= '0' && char <= '9') {
+            result.DIGITS++;
+        }
+    }
+    return result;
+}
+
+
+Task 3
+// Movie Database
+    // Implement functions to:
+    // ● Add a new movie.
+    // ● Find movies by a particular director.
+    // ● Find movies released in a particular year.
+    // ● Get all movies of a particular genre.
+    // ● Sort movies by title, director, or release year.
+    // ● Remove a movie by title.
+
+function addMovie(movie) {
+        return movies.push(movie);
+    }
+    
+    function findMoviesByDirector(director) {
+        return movies.filter(movie => movie.director === director);
+    }
+    
+    function findMoviesByYear(year) {
+        return movies.filter(movie => movie.year === year);
+    }
+    
+    function getMoviesByGenre(genre) {
+        return movies.filter(movie => movie.genres.includes(genre));
+    }
+    
+    function sortMoviesBy(criteria) {
+        const sortedMovies = movies;
+        sortedMovies.sort((a, b) => {
+            if (a[criteria] > b[criteria]) {
+                return 1; 
+            } else if (a[criteria] < b[criteria]) {
+                return -1; 
+            } else {
+                return 0; 
+            }
+        });
+        
+        return sortedMovies; 
+    }
+    
+    function removeMovieByTitle(title) {
+        movies = movies.filter(movie => movie.title !== title);
+    }
+
+Task 4
+ // Library System
+    // Implement functions to:
+    // ● Add a new book.
+    // ● Borrow a book by ISBN.
+    // ● Return a book by ISBN.
+    // ● Find all books by a particular author.
+    // ● List all available books.
+    // ● List all borrowed books.
+
+function addBook (book) {
+    return library.push(book)
+}
+
+function borrowBook (ISBN) {
+    const book = library.find(book => book.ISBN === ISBN && book.status === "available");
+    if (book) {
+        book.status = 'borrowed';
+        return true
+    }
+    return false
+}
+    function returnBook (ISBN) {
+        const book = library.find(book => book.ISBN === ISBN && book.status === "borrowed");
+        if (book) {
+            book.status = 'available';
+            return true
+        }
+        return false
+    }
+
+    function findBookByAuthor (author) {
+        return library.filter(book => book.author === author)
+    }
+
+    function listAvailableBooks () {
+        return library.filter(book => book.status === "available");
+    }
+
+    function listBorrowedBooks () {
+        return library.filter(book => book.status === "borrowed");
+    }
+
+Task 5
+// Student Gradebook
+// Implement functions to:
+// ● Add a new student.
+// ● Add a grade to a student by ID.
+// ● Calculate the average grade of a student by ID.
+// ● Find the highest grade of a student by ID.
+// ● Find the lowest grade of a student by ID.
+// ● Get all students with an average grade above a certain threshold.
+
+     function addStudent (student) {
+        return students.push(student)
+    }
+
+    function addGrade (ID, grade) {
+        const student = students.find(student => student.ID === ID);
+        if (student) {
+            student.grades.push(grade);
+        }
+    }
+
+    function calculateAverageGrade (ID) {
+        const student = students.find(student => student.ID === ID);
+        if (student) {
+            const sum = student.grades.reduce((acc, elem) => acc + elem, 0);
+            return sum / student.grades.length;
+        }
+    }
+    function findHighestGrade (ID) {
+        let highestGrade = -Infinity; 
+        const student = students.find(student => student.ID === ID);
+        if (student) {
+            for (let grade of student.grades) {
+                if (grade > highestGrade) {
+                    highestGrade = grade;
+                }
+            }
+            return highestGrade; 
+        } 
+    }
+    
+    function getStudentsAboveThreshold(threshold) {
+        return students.filter(student => student.grades.reduce((acc, curr) => acc + curr, 0) / student.grades.length > threshold);
+    }
