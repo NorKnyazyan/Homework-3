@@ -14,6 +14,32 @@ function countAll(str) {
     return result;
 }
 
+Task 2
+// Create counter function. Default counter number is 0. It should have these methods:
+
+function createFunction() {
+    const initialCount = 0;
+    this.count = initialCount;
+
+    this.add = function(value) {
+        this.count += value;
+    };
+
+    this.sub = function(value) {
+        this.count -= value;
+    };
+
+    this.getCount = function() {
+        return this.count;
+    };
+
+    this.reset = function() {
+        this.count = initialCount;
+    };
+
+    return this;
+}
+
 
 Task 3
 // Movie Database
